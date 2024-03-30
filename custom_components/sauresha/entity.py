@@ -301,6 +301,13 @@ class SauresBinarySensor(Entity):
                 "input": meter.input,
             }
         )
+
+        if meter.type_number == 10: # Датчик типа "Состояние крана"
+            if return_value == 0:
+                return_value = 1
+            elif return_value == 1:
+                return_value = 0
+
         if meter.state is not None:
             if meter.state.upper() == "ОБРЫВ":
                 return_value = True
